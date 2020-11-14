@@ -1,5 +1,6 @@
 import React from 'react'
 import Button, { ButtonSize, ButtonType } from './components/Button/button'
+import Alert, { AlertType } from './components/Alert/alert'
 
 function App() {
   return (
@@ -33,17 +34,20 @@ function App() {
           Disabled Link
         </Button>
 
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Alert
+          closable
+          title="this is alert!"
+          type={AlertType.primary}
+          onClose={() => alert('1')}
+        />
+
+        <Alert
+          closable
+          description="this is a long description"
+          onClose={function noRefCheck() {}}
+          title="提示标题欧亲"
+          type={AlertType.success}
+        />
       </header>
     </div>
   )

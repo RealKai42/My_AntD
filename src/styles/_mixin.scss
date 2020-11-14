@@ -36,3 +36,8 @@
     border-color: $border;
   }
 }
+
+@mixin alert-color($background, $color) {
+  color: $color;
+  background-color: $background;
+}
