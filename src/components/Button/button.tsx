@@ -30,7 +30,7 @@ const Button: React.FC<BaseButtonProps> = (props) => {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     // 判断是否是link元素，link元素没有disable的属性，所以要在classes上体现
-    disable: btnType === ButtonType.Link && disabled,
+    disabled: btnType === ButtonType.Link && disabled,
   })
   if (btnType === ButtonType.Link && href) {
     return (
