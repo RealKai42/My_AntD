@@ -2,13 +2,13 @@ import React from 'react'
 import classNames from 'classnames'
 
 export enum AlertType {
+  default = 'default',
   success = 'success',
-  primary = 'primary',
   warning = 'warning',
   danger = 'danger',
 }
 
-interface AlertProps {
+export interface AlertProps {
   title: string
   closable?: boolean
   onClose?: () => void
@@ -22,7 +22,7 @@ const Alert: React.FC<AlertProps> = (props) => {
     closable = true,
     onClose,
     description,
-    type = 'primary',
+    type = AlertType.default,
   } = props
 
   const classes = classNames('alert', {

@@ -37,7 +37,7 @@ function App() {
         <Alert
           closable
           title="this is alert!"
-          type={AlertType.primary}
+          type={AlertType.default}
           onClose={() => alert('1')}
         />
 

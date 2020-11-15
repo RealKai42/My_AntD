@@ -17,7 +17,7 @@ const disabledProps: ButtonProps = {
 }
 describe('test Button component', () => {
   // it等价于test
-  it('show render the correct default button', () => {
+  it('should render the correct default button', () => {
     // render方法将Button渲染到真实的dom节点上
     const wrapper = render(<Button {...defaultProps}>Test</Button>)
     const element = wrapper.getByText('Test') as HTMLButtonElement
