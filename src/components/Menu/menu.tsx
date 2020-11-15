@@ -20,7 +20,7 @@ export const MenuContext = createContext<IMenuContext>({ index: 0 })
 const Menu: React.FC<MenuProps> = (props) => {
   const { className, mode, style, children, defaultIndex, onSelect } = props
   const [currentActive, setActive] = useState(defaultIndex)
-  const classes = classNames('menu', classNames, {
+  const classes = classNames('menu', className, {
     'menu-vertical': mode === 'vertical',
   })
   const handleClick = (index: number) => {
@@ -35,7 +35,7 @@ const Menu: React.FC<MenuProps> = (props) => {
   }
 
   return (
-    <ul className={classes} style={style}>
+    <ul className={classes} style={style} data-testid="test-menu">
       <MenuContext.Provider value={passedContext}>
         {children}
       </MenuContext.Provider>
