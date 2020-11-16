@@ -1,8 +1,7 @@
 import React from 'react'
-import Button, { ButtonSize, ButtonType } from './components/Button/button'
-import Alert, { AlertType } from './components/Alert/alert'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu'
 
 function App() {
   return (
@@ -15,55 +14,15 @@ function App() {
             alert(index)
           }}
         >
-          <MenuItem index={0}>cool link</MenuItem>
-          <MenuItem index={1} disabled>
-            cool link2
-          </MenuItem>
-          <MenuItem index={2}>cool link3</MenuItem>
+          <MenuItem>cool link</MenuItem>
+          <MenuItem disabled>cool link2</MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>dropdown 1</MenuItem>
+            <MenuItem>dropdown 2</MenuItem>
+            <MenuItem>dropdown 3</MenuItem>
+          </SubMenu>
+          <MenuItem>cool link3</MenuItem>
         </Menu>
-
-        <Button
-          autoFocus
-          className="custom"
-          onClick={(e) => {
-            e.preventDefault()
-            alert('123')
-          }}
-        >
-          Hello
-        </Button>
-        <Button disabled>Disabled Button</Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
-          Large Primary
-        </Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>
-          Small Danger
-        </Button>
-        <Button
-          btnType={ButtonType.Link}
-          href="https://www.baidu.com"
-          target="blank"
-        >
-          Baidu Link
-        </Button>
-        <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled>
-          Disabled Link
-        </Button>
-
-        <Alert
-          closable
-          title="this is alert!"
-          type={AlertType.default}
-          onClose={() => alert('1')}
-        />
-
-        <Alert
-          closable
-          description="this is a long description"
-          onClose={function noRefCheck() {}}
-          title="提示标题欧亲"
-          type={AlertType.success}
-        />
       </header>
     </div>
   )
