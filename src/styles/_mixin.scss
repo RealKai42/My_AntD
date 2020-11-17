@@ -42,6 +42,7 @@
   background-color: $background;
 }
 
+// 对animation的抽象
 @mixin zoom-animation(
   $direction: 'top',
   $scaleStart: scaleY(0),
