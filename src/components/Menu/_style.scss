@@ -35,6 +35,7 @@
       align-items: center;
     }
     .arrow-icon {
+      // 通过transition来控制运行
       transition: transform 0.25s ease-in-out;
       margin-left: 3px;
     }
@@ -44,6 +45,7 @@
       }
     }
   }
+  // 对纵向布局的情况进行特定处理，并通过important来提高优先级，覆盖掉hover的动画
   .is-vertical {
     .arrow-icon {
       transform: rotate(0deg) !important;

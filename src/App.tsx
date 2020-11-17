@@ -12,7 +12,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Icon icon="coffee" theme="primary" size="10x" />
         <Menu
           defaultIndex={'0'}
           mode={'vertical'}
