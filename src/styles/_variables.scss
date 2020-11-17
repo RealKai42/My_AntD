@@ -32,6 +32,17 @@ $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
 
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark,
+);
+
 // 无衬线字体
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
