@@ -14,7 +14,7 @@ function App() {
       <header className="App-header">
         <Menu
           defaultIndex={'0'}
-          mode={'vertical'}
+          // mode={'vertical'}
           defaultOpenSubMenus={['2']}
           onSelect={(index) => {
             alert(index)
