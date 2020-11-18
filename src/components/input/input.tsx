@@ -19,6 +19,7 @@ export interface InputProps
   icon?: IconProp
   prepend?: string | ReactElement
   append?: string | ReactElement
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input: FC<InputProps> = (props) => {
@@ -37,6 +38,7 @@ export const Input: FC<InputProps> = (props) => {
     return value
   }
   if ('value' in props) {
+    // 对受控组件进行处理, 删除默认值，并对undefined和null进行处理
     delete restProps.defaultValue
     restProps.value = fixControlledValue(props.value)
   }

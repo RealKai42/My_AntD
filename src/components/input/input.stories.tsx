@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Input } from './input'
+
+// 受控组件，值由state控制
 const ControlledInput = () => {
-  const [value, setValue] = useState()
+  const [value, setValue] = useState('')
   return (
     <Input
       value={value}

@@ -17,6 +17,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <Icon icon="coffee" theme="danger" size="10x" />
         <Menu
           defaultIndex={'0'}
           // mode={'vertical'}

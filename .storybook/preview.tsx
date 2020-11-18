@@ -2,7 +2,10 @@ import '../src/styles/index.scss'
 import React from 'react'
 import { addDecorator, storiesOf, addParameters } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
+library.add(fas)
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
 }
