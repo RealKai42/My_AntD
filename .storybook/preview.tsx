@@ -27,17 +27,18 @@ const storyWrapper = (storyFn: any) => (
     {storyFn()}
   </div>
 )
+
 addDecorator(storyWrapper)
 addDecorator(withInfo)
 addParameters({
   info: {
-    // text: `
-    //     this is a very nice component
-    //     ## this is a header
-    //     ~~~js
-    //     const a = 'hello world'
-    //     ~~~
-    //   `,
+    text: `
+        this is a very nice component
+        ## this is a header
+        ~~~js
+        const a = 'hello world'
+        ~~~
+      `,
     inline: true,
     header: false,
   },
