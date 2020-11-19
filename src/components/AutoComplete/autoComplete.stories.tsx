@@ -70,19 +70,20 @@ const SimpleComplete = () => {
   //   )
   // }
 
-  const renderOption = (item: DataSourceType<GithubUserProps>) => {
-    return (
-      <>
-        <h2>Name:{item.login}</h2>
-        <p>Number:{item.url}</p>
-      </>
-    )
-  }
+  // const renderOption = (item: DataSourceType<GithubUserProps>) => {
+  //   return (
+  //     <>
+  //       <h2>Name:{item.login}</h2>
+  //       <p>Number:{item.url}</p>
+  //     </>
+  //   )
+  // }
+
   return (
     <AutoComplete
       fetchSuggestions={handleFetch}
       onSelect={action('selected')}
-      renderOption={renderOption}
+      // renderOption={renderOption}
     ></AutoComplete>
   )
 }
