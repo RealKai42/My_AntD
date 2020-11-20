@@ -21,11 +21,11 @@ const filePromise = (file: File) => {
 const SimpleUpload = () => {
   return (
     <Upload
-      action="https://run.mocky.io/v3/b5fbe65c-ed29-4cec-a056-8115f0e103d4"
+      // action="https://run.mocky.io/v3/b5fbe65c-ed29-4cec-a056-8115f0e103d4"
       // action="https://jsonplaceholder.typicode.com/posts"
-      // action="https://testa.free.beeceptor.com"
-      onChange={action('changed')}
-      beforeUpload={filePromise}
+      action="https://testa.free.beeceptor.com"
+      // onChange={action('changed')}
+      // beforeUpload={filePromise}
     />
   )
 }
