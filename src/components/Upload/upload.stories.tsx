@@ -1,7 +1,19 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { Upload } from './upload'
+import { Upload, UploadFile } from './upload'
+
+const defaultFileList: UploadFile[] = [
+  {
+    uid: '123',
+    size: 1234,
+    name: 'hello.md',
+    status: 'uploading',
+    percent: 30,
+  },
+  { uid: '122', size: 1234, name: 'xyz.md', status: 'success', percent: 30 },
+  { uid: '121', size: 1234, name: 'eyiha.md', status: 'error', percent: 30 },
+]
 
 const checkFileSize = (file: File) => {
   // 一个返回boolean值的文件预处理
@@ -24,8 +36,9 @@ const SimpleUpload = () => {
       // action="https://run.mocky.io/v3/b5fbe65c-ed29-4cec-a056-8115f0e103d4"
       // action="https://jsonplaceholder.typicode.com/posts"
       action="https://testa.free.beeceptor.com"
-      // onChange={action('changed')}
-      // beforeUpload={filePromise}
+      onChange={action('changed')}
+      defaultFileList={defaultFileList}
+      onRemove={action('removed')}
     />
   )
 }
