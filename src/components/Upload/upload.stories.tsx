@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Upload, UploadFile } from './upload'
+import Icon from '../Icon/icon'
 
 const defaultFileList: UploadFile[] = [
   {
@@ -39,11 +40,13 @@ const SimpleUpload = () => {
       onRemove={action('removed')}
       // defaultFileList={defaultFileList}
       name="fileName"
-      data={{ key: 'value' }}
-      headers={{ 'X-Powered-By': 'antd' }}
-      accept=".jpg"
       multiple
-    />
+      drag
+    >
+      <Icon icon="upload" size="5x" theme="secondary" />
+      <br />
+      <p>Drag file over to upload</p>
+    </Upload>
   )
 }
 

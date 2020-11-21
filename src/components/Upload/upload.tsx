@@ -1,7 +1,8 @@
-import React, { ChangeEvent, FC, useRef, useState } from 'react'
+import React, { ChangeEvent, Children, FC, useRef, useState } from 'react'
 import axios from 'axios'
 import Button from '../Button/button'
 import UploadList from './uploadList'
+import Dragger from './dragger'
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
 export interface UploadFile {
@@ -31,6 +32,7 @@ export interface UploadProps {
   withCredentials?: boolean
   accept?: string
   multiple?: boolean
+  drag?: boolean
 }
 
 export const Upload: FC<UploadProps> = (props) => {
@@ -49,6 +51,8 @@ export const Upload: FC<UploadProps> = (props) => {
     withCredentials,
     accept,
     multiple,
+    drag,
+    children,
   } = props
   // 拿到input的真实节点
   const fileInput = useRef<HTMLInputElement>(null)
@@ -176,18 +180,33 @@ export const Upload: FC<UploadProps> = (props) => {
 
   return (
     <div className="upload-component">
-      <Button btnType="primary" onClick={handleClick}>
-        Upload File
-      </Button>
-      <input
-        className="file-inpout"
-        style={{ display: 'none' }}
-        ref={fileInput}
-        onChange={handleFileChange}
-        type="file"
-        accept={accept}
-        multiple={multiple}
-      />
+      <div
+        className="upload-input"
+        style={{ display: 'inline-block' }}
+        onClick={handleClick}
+      >
+        {drag ? (
+          <Dragger
+            onFile={(files) => {
+              uploadFiles(files)
+            }}
+          >
+            {children}
+          </Dragger>
+        ) : (
+          { children }
+        )}
+
+        <input
+          className="file-inpout"
+          style={{ display: 'none' }}
+          ref={fileInput}
+          onChange={handleFileChange}
+          type="file"
+          accept={accept}
+          multiple={multiple}
+        />
+      </div>
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
   )
