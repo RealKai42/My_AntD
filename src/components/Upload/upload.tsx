@@ -25,6 +25,12 @@ export interface UploadProps {
   // 在成功和失败前都会被调用
   onChange?: (file: File) => void
   onRemove?: (file: UploadFile) => void
+  headers?: { [key: string]: any }
+  name?: string
+  data?: { [key: string]: any }
+  withCredentials?: boolean
+  accept?: string
+  multiple?: boolean
 }
 
 export const Upload: FC<UploadProps> = (props) => {
@@ -37,6 +43,12 @@ export const Upload: FC<UploadProps> = (props) => {
     onError,
     onChange,
     onRemove,
+    name,
+    headers,
+    data,
+    withCredentials,
+    accept,
+    multiple,
   } = props
   // 拿到input的真实节点
   const fileInput = useRef<HTMLInputElement>(null)
@@ -108,15 +120,24 @@ export const Upload: FC<UploadProps> = (props) => {
       percent: 0,
       raw: file,
     }
-    setFileList([_file, ...fileList])
+    setFileList((prevList) => {
+      return [_file, ...prevList]
+    })
 
     const formData = new FormData()
-    formData.append(file.name, file)
+    formData.append(name || 'file', file)
+    if (data) {
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key])
+      })
+    }
     axios
       .post(action, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          ...headers,
         },
+        withCredentials,
         onUploadProgress: (e) => {
           // onProgress生命周期的方法
           let percentage = Math.round((e.loaded * 100) / e.total) || 0
@@ -164,8 +185,16 @@ export const Upload: FC<UploadProps> = (props) => {
         ref={fileInput}
         onChange={handleFileChange}
         type="file"
+        accept={accept}
+        multiple={multiple}
       />
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
   )
 }
+
+Upload.defaultProps = {
+  name: 'file',
+}
+
+export default Upload

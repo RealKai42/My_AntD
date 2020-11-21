@@ -36,8 +36,13 @@ const SimpleUpload = () => {
       // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       action="https://testa.free.beeceptor.com"
       onChange={action('changed')}
-      defaultFileList={defaultFileList}
       onRemove={action('removed')}
+      // defaultFileList={defaultFileList}
+      name="fileName"
+      data={{ key: 'value' }}
+      headers={{ 'X-Powered-By': 'antd' }}
+      accept=".jpg"
+      multiple
     />
   )
 }
