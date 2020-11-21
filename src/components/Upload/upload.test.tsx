@@ -10,10 +10,10 @@ import {
 } from '@testing-library/react'
 import { Upload, UploadProps } from './upload'
 
-// mock了Icon的显示，代替成了文字
+// mock了Icon的显示，代替成了文字,为了响应点击事件，这里也要把onclick添加上
 jest.mock('../Icon/icon', () => {
-  return ({ icon }) => {
-    return <span>{icon}</span>
+  return ({ icon, onClick }) => {
+    return <span onClick={onClick}>{icon}</span>
   }
 })
 // mock axios
@@ -24,6 +24,8 @@ const testProps: UploadProps = {
   action: 'fakeurl.com',
   onSuccess: jest.fn(),
   onChange: jest.fn(),
+  onRemove: jest.fn(),
+  drag: true,
 }
 
 let wrapper: RenderResult, fileInput: HTMLInputElement, uploadArea: HTMLElement
@@ -45,7 +47,11 @@ describe('test upload component', () => {
     mockedAxios.post.mockResolvedValue({ data: 'cool' })
     expect(uploadArea).toBeInTheDocument()
     expect(fileInput).not.toBeVisible()
-    fireEvent.change(fileInput, { target: { files: [testFile] } })
+    fireEvent.change(fileInput, {
+      target: {
+        files: [testFile],
+      },
+    })
     expect(queryByText('spinner')).toBeInTheDocument()
     await waitFor(() => {
       expect(queryByText('test.png')).toBeInTheDocument()
@@ -53,5 +59,41 @@ describe('test upload component', () => {
     expect(queryByText('check-circle')).toBeInTheDocument()
     expect(testProps.onSuccess).toHaveBeenCalledWith('cool', testFile)
     expect(testProps.onChange).toHaveBeenCalledWith(testFile)
+
+    //remove the uploaded file
+    expect(queryByText('times')).toBeInTheDocument()
+    fireEvent.click(queryByText('times')!)
+    expect(queryByText('test.png')).not.toBeInTheDocument()
+    // 测试被调用对象中是否包含特定属性
+    expect(testProps.onRemove).toHaveBeenCalledWith(
+      expect.objectContaining({
+        raw: testFile,
+        status: 'success',
+        name: 'test.png',
+      })
+    )
+  })
+
+  it('drag and drop files should works fine', async () => {
+    mockedAxios.post.mockResolvedValue({ data: 'cool' })
+    fireEvent.dragOver(uploadArea)
+    expect(uploadArea).toHaveClass('is-dragover')
+    fireEvent.dragLeave(uploadArea)
+    expect(uploadArea).not.toHaveClass('is-dragover')
+
+    // 创建一个drop event对象，然后扩展这个对象
+    // 在用fireEvent来触发
+    const mockDropEvent = createEvent.drop(uploadArea)
+    Object.defineProperty(mockDropEvent, 'dataTransfer', {
+      value: {
+        files: [testFile],
+      },
+    })
+    fireEvent(uploadArea, mockDropEvent)
+
+    await waitFor(() => {
+      expect(wrapper.queryByText('test.png')).toBeInTheDocument()
+    })
+    expect(testProps.onSuccess).toHaveBeenCalledWith('cool', testFile)
   })
 })
