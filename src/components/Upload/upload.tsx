@@ -194,11 +194,11 @@ export const Upload: FC<UploadProps> = (props) => {
             {children}
           </Dragger>
         ) : (
-          { children }
+          children
         )}
 
         <input
-          className="file-inpout"
+          className="file-input"
           style={{ display: 'none' }}
           ref={fileInput}
           onChange={handleFileChange}
