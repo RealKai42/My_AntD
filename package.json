@@ -30,13 +30,18 @@
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "start-storybook -p 6006 -s public --no-dll",
     "build-storybook": "build-storybook -s public --no-dll",
-    "prepublish": "yarn test:nowatch && yarn build"
+    "prepublish": "yarn test:nowatch && yarn lint && yarn build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test:nowatch && yarn lint"
+    }
   },
   "browserslist": {
     "production": [
