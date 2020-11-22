@@ -55,3 +55,5 @@ export const Input: FC<InputProps> = (props) => {
     </div>
   )
 }
+
+export default Input
