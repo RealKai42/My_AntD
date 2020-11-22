@@ -10,6 +10,19 @@ import Menu, { MenuProps } from './menu'
 import MenuItem from './menuItem'
 import SubMenu from './submenu'
 
+jest.mock('../Icon/icon', () => {
+  return () => {
+    return <i className="fa" />
+  }
+})
+jest.mock('react-transition-group', () => {
+  return {
+    CSSTransition: (props: any) => {
+      return props.children
+    },
+  }
+})
+
 const testProps: MenuProps = {
   defaultIndex: '0',
   onSelect: jest.fn(),
@@ -57,6 +70,7 @@ let wrapper: RenderResult,
 describe('test Menu and MenuItem component', () => {
   beforeEach(() => {
     wrapper = render(generateMenu(testProps))
+    wrapper.container.append(createStyleFile())
     menuElement = wrapper.getByTestId('test-menu')
     activeElement = wrapper.getByText('active')
     disabledElement = wrapper.getByText('disabled')
@@ -88,7 +102,6 @@ describe('test Menu and MenuItem component', () => {
   })
   it('should show dropdown items when hover on subMenu', async () => {
     // 测试元素是否出现在视野中，因为使用css控制是否出现，所以这里需要引入css
-    wrapper.container.append(createStyleFile())
     expect(wrapper.queryByText('drop1')).not.toBeVisible()
     const dropdownElement = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElement)

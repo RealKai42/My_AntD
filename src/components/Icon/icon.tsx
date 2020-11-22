@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import {
   FontAwesomeIcon,
