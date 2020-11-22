@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, MenuProps } from './menu'
-import SubMenu, { SubMenuProps } from './submenu'
+import SubMenu, { SubMenuProps } from './subMenu'
 import MenuItem, { MenuItemProps } from './menuItem'
 
 export type IMenuComponent = React.FC<MenuProps> & {
