@@ -28,8 +28,8 @@
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
-    "storybook": "start-storybook -p 6006 -s public --no-dll",
-    "build-storybook": "build-storybook -s public --no-dll",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
     "prepublish": "yarn test:nowatch && yarn lint && yarn build"
   },
   "eslintConfig": {
