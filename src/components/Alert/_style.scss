@@ -20,14 +20,11 @@
   }
 
   position: relative;
-  > i:last-child {
+  .icon-wrapper {
     position: absolute;
     right: $alert-icon-right;
     top: $alert-icon-top;
-    font-style: normal;
     cursor: pointer;
-    font-weight: $alert-icon-font-weight;
-    font-size: $alert-icon-font-size;
   }
 }
 

@@ -2,16 +2,22 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import Alert, { AlertType, AlertProps } from './alert'
 
+jest.mock('../Icon', () => {
+  return ({ icon, onClick }) => {
+    return <span onClick={onClick}>{icon}</span>
+  }
+})
+
 const defaultProps: AlertProps = {
   title: 'testTitle',
   description: 'testDesc',
-  type: AlertType.default,
+  type: 'default',
   closable: true,
   onClose: jest.fn(),
 }
 const dangerProps: AlertProps = {
   title: 'testTitle',
-  type: AlertType.danger,
+  type: 'danger',
 }
 const unClosableProps: AlertProps = {
   title: 'testTitle',
@@ -28,8 +34,7 @@ describe('test alert component', () => {
     expect(desc.tagName).toEqual('P')
     expect(desc).toHaveClass('alert-message')
 
-    const close = wrapper.getByText('关闭')
-    expect(close.tagName).toEqual('I')
+    const close = wrapper.getByText('times')
     fireEvent.click(close)
     expect(defaultProps.onClose).toHaveBeenCalled()
   })
@@ -41,7 +46,7 @@ describe('test alert component', () => {
   })
   it('should not render the close button while closable set to true', () => {
     const wrapper = render(<Alert {...unClosableProps} />)
-    const close = wrapper.queryByText('关闭')
+    const close = wrapper.queryByText('times')
     expect(close).toBeNull()
   })
 })

@@ -21,7 +21,7 @@ export interface IconProps extends FontAwesomeIconProps {
 }
 
 // 对font awesome进行二层封装
-const Icon: React.FC<IconProps> = (props) => {
+export const Icon: React.FC<IconProps> = (props) => {
   const { className, theme, ...resetProps } = props
   const classes = classNames('icon', className, {
     [`icon-${theme}`]: theme,
