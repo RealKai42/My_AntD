@@ -1,64 +1,79 @@
-import React, { useState } from 'react'
-import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Input } from './input'
+import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { Input, InputProps } from './input'
 
-// 受控组件，值由state控制
-const ControlledInput = () => {
-  const [value, setValue] = useState('')
-  return (
-    <Input
-      value={value}
-      defaultValue={value}
-      onChange={(e) => {
-        setValue(e.target.value)
-      }}
-    />
-  )
+export default {
+  title: 'Input',
+  component: Input,
+  argTypes: {
+    onChange: { action: 'Changed Input' },
+  },
+} as Meta
+const defaultStyle = { width: '500px' }
+const Template: Story<InputProps> = (args) => (
+  <Input style={defaultStyle} {...args} />
+)
+
+export const Default = Template.bind({})
+Default.args = {
+  placeholder: 'placeholder',
 }
-const defaultInput = () => (
-  <>
-    <Input
-      style={{ width: '500px' }}
-      placeholder="placeholder"
-      onChange={action('changed')}
-    />
-    <ControlledInput />
-  </>
-)
-const disabledInput = () => (
-  <Input style={{ width: '500px' }} placeholder="disabled input" disabled />
-)
 
-const iconInput = () => (
-  <Input
-    style={{ width: '500px' }}
-    placeholder="input with icon"
-    icon="search"
-  />
-)
+export const DefaultValue = Template.bind({})
+DefaultValue.args = {
+  defaultValue: 'default value',
+}
 
-const sizeInput = () => (
-  <>
-    <Input style={{ width: '500px' }} defaultValue="large size" size="lg" />
-    <Input style={{ width: '500px' }} placeholder="small size" size="sm" />
-  </>
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  placeholder: 'placeholder',
+  disabled: true,
+}
 
-const pandInput = () => (
-  <>
-    <Input
-      style={{ width: '500px' }}
-      defaultValue="prepend text"
-      prepend="https://"
-    />
-    <Input style={{ width: '500px' }} defaultValue="google" append=".com" />
-  </>
-)
+export const InputWithIcon = Template.bind({})
+InputWithIcon.args = {
+  placeholder: 'input with icon',
+  icon: 'search',
+}
 
-storiesOf('Input component', module)
-  .add('Input', defaultInput)
-  .add('被禁用的 Input', disabledInput)
-  .add('带图标的 Input', iconInput)
-  .add('大小不同的 Input', sizeInput)
-  .add('带前后缀的 Input', pandInput)
+export const LargeInput = Template.bind({})
+LargeInput.args = {
+  placeholder: 'large input',
+  size: 'lg',
+}
+
+export const SmallInput = Template.bind({})
+SmallInput.args = {
+  placeholder: 'small input',
+  size: 'sm',
+}
+
+export const InputWithPrepand = Template.bind({})
+InputWithPrepand.args = {
+  placeholder: 'input with prepand',
+  prepend: 'https://',
+}
+
+export const InputWithAppend = Template.bind({})
+InputWithAppend.args = {
+  placeholder: 'input with append',
+  append: '.com',
+}
+
+// const pandInput = () => (
+//   <>
+//     <Input
+//       style={{ width: '500px' }}
+//       defaultValue="prepend text"
+//       prepend="https://"
+//     />
+//     <Input style={{ width: '500px' }} defaultValue="google" append=".com" />
+//   </>
+// )
+
+// storiesOf('Input component', module)
+//   .add('Input', defaultInput)
+//   .add('被禁用的 Input', disabledInput)
+//   .add('带图标的 Input', iconInput)
+//   .add('大小不同的 Input', sizeInput)
+//   .add('带前后缀的 Input', pandInput)

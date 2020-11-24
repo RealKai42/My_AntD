@@ -13,7 +13,7 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
-      order: ['Welcome page', 'Alert', 'Button', 'Icon', 'Menu'],
+      order: ['Welcome page', 'Alert', 'Button', 'Icon', 'Menu', 'Input'],
     },
   },
 }
