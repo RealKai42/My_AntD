@@ -2,9 +2,10 @@ import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classNames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
-export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
+export type ButtonType = 'default' | 'primary' | 'danger' | 'link'
 
 interface BaseButtonProps {
+  /**用户自定义的 className */
   className?: string
   /**设置 Button 的禁用 */
   disabled?: boolean
@@ -12,6 +13,8 @@ interface BaseButtonProps {
   size?: ButtonSize
   /**设置 Button 的类型 */
   btnType?: ButtonType
+  /**Button内置文本 */
+  label: string
   children: React.ReactNode
   href?: string
 }
@@ -24,10 +27,11 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
 /**
  * 页面中最常用的的按钮元素，适合于完成特定的交互
+ *
  * ### 引用方法
  *
  * ~~~js
- * import { Button } from 'vikingship'
+ * import { Button } from 'MyAntD'
  * ~~~
  */
 export const Button: FC<ButtonProps> = (props) => {
@@ -38,6 +42,7 @@ export const Button: FC<ButtonProps> = (props) => {
     size,
     children,
     href,
+    label,
     ...restProps
   } = props
 
@@ -48,16 +53,20 @@ export const Button: FC<ButtonProps> = (props) => {
     // 判断是否是link元素，link元素没有disable的属性，所以要在classes上体现
     disabled: btnType === 'link' && disabled,
   })
+
+  // label与children二选一
+  const content = label ? label : children
+
   if (btnType === 'link' && href) {
     return (
       <a className={classes} href={href} {...restProps}>
-        {children}
+        {content}
       </a>
     )
   } else {
     return (
       <button className={classes} disabled={disabled} {...restProps}>
-        {children}
+        {content}
       </button>
     )
   }

@@ -1,11 +1,26 @@
 {
-  "name": "myantd",
+  "name": "my_antd",
   "version": "0.1.0",
-  "description": "none",
-  "private": true,
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
+  "description": "个人练习项目，模仿AndD制作的组件库",
+  "author": "Kaiyi",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "homepage": "https://github.com/Kaiyiwing/My_AntD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kaiyiwing/My_AntD"
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -20,7 +35,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "clean": "rimraf ./build",
+    "clean": "rimraf ./dist",
     "lint": "eslint --ext js,ts,tsx src",
     "build": "yarn clean && yarn build-ts && yarn build-css",
     "test": "react-scripts test",
@@ -78,6 +93,7 @@
     "husky": "^4.3.0",
     "node-sass": "4.14.1",
     "react": "^17.0.1",
+    "react-docgen-typescript": "^1.20.5",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",

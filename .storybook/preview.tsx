@@ -1,11 +1,5 @@
-import '../src/styles/index.scss'
+import '!style-loader!css-loader!sass-loader!../src/styles/index.scss'
 import React from 'react'
-import {
-  addDecorator,
-  storiesOf,
-  addParameters,
-  configure,
-} from '@storybook/react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,12 +9,14 @@ const wrapperStyle: React.CSSProperties = {
   padding: '20px 40px',
 }
 
-addParameters({
-  info: {
-    inline: true,
-    header: false,
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  options: {
+    storySort: {
+      order: ['Welcome page'],
+    },
   },
-})
+}
 
 export const decorators = [
   (Stroy) => (
