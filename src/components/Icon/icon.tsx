@@ -26,6 +26,8 @@ export interface IconProps extends FontAwesomeIconProps {
 /**
  * Icon 组件为对 font awesome 的二次封装，图标覆盖其中 **Free&Solid** 部分
  *
+ * 继承了 font awesome 原生的所有属性和事件
+ *
  */
 export const Icon: React.FC<IconProps> = (props) => {
   const { className, theme, ...resetProps } = props

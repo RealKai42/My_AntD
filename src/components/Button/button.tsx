@@ -28,6 +28,8 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 /**
  * 页面中最常用的的按钮元素，适合于完成特定的交互
  *
+ * 支持 HTML 原声 Button的所有事件
+ *
  */
 export const Button: FC<ButtonProps> = (props) => {
   const {
