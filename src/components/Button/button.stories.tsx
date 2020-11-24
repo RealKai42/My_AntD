@@ -16,7 +16,7 @@ export const defaultButton = Template.bind({})
 defaultButton.args = {
   label: 'Default',
 }
-defaultButton.storyName = 'Default'
+defaultButton.storyName = 'Button'
 
 export const Primary = Template.bind({})
 Primary.args = {

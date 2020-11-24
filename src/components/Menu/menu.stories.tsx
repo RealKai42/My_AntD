@@ -26,7 +26,7 @@ const Template: Story<MenuProps> = (args) => (
 )
 
 export const BasicMenu = Template.bind({})
-BasicMenu.args = {}
+BasicMenu.storyName = 'Menu'
 
 export const VerticalMenu = Template.bind({})
 VerticalMenu.args = {

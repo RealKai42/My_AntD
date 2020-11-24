@@ -16,6 +16,7 @@ export const defaultAlert = Template.bind({})
 defaultAlert.args = {
   title: 'Default',
 }
+defaultAlert.storyName = 'Alert'
 
 export const Success = Template.bind({})
 Success.args = {

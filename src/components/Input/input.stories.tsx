@@ -18,6 +18,7 @@ export const Default = Template.bind({})
 Default.args = {
   placeholder: 'placeholder',
 }
+Default.storyName = 'Input'
 
 export const DefaultValue = Template.bind({})
 DefaultValue.args = {

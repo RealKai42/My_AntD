@@ -42,7 +42,6 @@ export const Icon: React.FC<IconProps> = (props) => {
     />
   )
 }
-
 Icon.defaultProps = {
   icon: 'apple',
   theme: 'default',

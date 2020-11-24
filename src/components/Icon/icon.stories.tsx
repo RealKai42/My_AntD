@@ -13,6 +13,10 @@ export default {
       description: '响应对 Icon 的鼠标点击事件',
       action: 'Click',
     },
+    size: {
+      description: '设置 Icon 的大小, 如 “2x”、"4x"',
+      type: 'text',
+    },
   },
 } as Meta
 
