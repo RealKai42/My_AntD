@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import Alert, { AlertType, AlertProps } from './alert'
+import Alert, { AlertProps } from './alert'
 
 jest.mock('../Icon', () => {
   return ({ icon, onClick }: { icon: string; onClick: () => {} }) => {
