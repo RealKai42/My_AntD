@@ -6,11 +6,17 @@ type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: string) => void
 
 export interface MenuProps {
+  /**设置默认选中的 MenuItem */
   defaultIndex?: string
+  /**设置用户自定义的类 */
   className?: string
+  /**设置 Menu 展示的 */
   mode?: MenuMode
+  /**设置用户自定义的Style */
   style?: React.CSSProperties
+  /**设置选中 MenuItem时的回调函数 */
   onSelect?: SelectCallback
+  /**默认打开的 SubMenu，仅在 mode 为 vertical 时生效 */
   defaultOpenSubMenus?: string[]
 }
 
@@ -21,6 +27,10 @@ interface IMenuContext {
   defaultOpenSubMenus?: string[]
 }
 export const MenuContext = createContext<IMenuContext>({ index: '0' })
+
+/**
+ * 用于导航功能的菜单，提供横纵两种模式，支持子菜单
+ */
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
     className,
