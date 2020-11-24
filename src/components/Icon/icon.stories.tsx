@@ -44,3 +44,17 @@ Info.args = {
   icon: 'cannabis',
   theme: 'info',
 }
+
+export const spinIcon = Template.bind({})
+spinIcon.args = {
+  icon: 'spinner',
+  spin: true,
+  theme: 'primary',
+}
+
+export const pulseIcon = Template.bind({})
+pulseIcon.args = {
+  icon: 'spinner',
+  pulse: true,
+  theme: 'success',
+}
