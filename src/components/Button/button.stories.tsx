@@ -1,8 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { Button, ButtonProps } from './button'
-import SFC from '../../tools/stroyNamedFC'
-import { linkSync } from 'fs'
 
 export default {
   title: 'Button',
