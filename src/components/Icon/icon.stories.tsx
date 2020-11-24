@@ -16,15 +16,27 @@ export default {
   },
 } as Meta
 
-const Template: Story<IconProps> = (args) => <Icon {...args} />
+const Template: Story<IconProps> = (args) => <Icon size="3x" {...args} />
 
 export const Icons = Template.bind({})
 Icons.args = {
   icon: 'star-of-david',
 }
 
-export const Theme = Template.bind({})
-Theme.args = {
+export const Primary = Template.bind({})
+Primary.args = {
   icon: 'space-shuttle',
   theme: 'primary',
+}
+
+export const Danger = Template.bind({})
+Danger.args = {
+  icon: 'broom',
+  theme: 'danger',
+}
+
+export const Info = Template.bind({})
+Info.args = {
+  icon: 'cannabis',
+  theme: 'info',
 }
