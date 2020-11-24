@@ -12,7 +12,7 @@ import { Upload, UploadProps } from './upload'
 
 // mock了Icon的显示，代替成了文字,为了响应点击事件，这里也要把onclick添加上
 jest.mock('../Icon/icon', () => {
-  return ({ icon, onClick }) => {
+  return ({ icon, onClick }: { icon: string; onClick: () => {} }) => {
     return <span onClick={onClick}>{icon}</span>
   }
 })

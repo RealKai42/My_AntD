@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import Alert, { AlertType, AlertProps } from './alert'
 
 jest.mock('../Icon', () => {
-  return ({ icon, onClick }) => {
+  return ({ icon, onClick }: { icon: string; onClick: () => {} }) => {
     return <span onClick={onClick}>{icon}</span>
   }
 })
