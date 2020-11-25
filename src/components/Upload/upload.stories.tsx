@@ -3,7 +3,6 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { Upload, UploadFile, UploadProps } from './upload'
 import Icon from '../Icon/icon'
 import Button, { ButtonProps } from '../Button'
-import { access } from 'fs'
 
 export default {
   title: 'Upload',
