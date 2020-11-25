@@ -9,10 +9,10 @@ export interface ProgressProps {
   theme?: ThemeProps
 }
 
-const Progress: FC<ProgressProps> = (props) => {
+export const Progress: FC<ProgressProps> = (props) => {
   const { precent, strokeHight, showText, styles, theme } = props
   return (
-    <div className="progress-bar" style={styles}>
+    <div className="progress-bar" style={styles} data-testid="test-progress">
       <div
         className="progress-bar-outer"
         style={{ height: `${strokeHight}px` }}
