@@ -15,22 +15,35 @@ export interface UploadFile {
   error?: any
 }
 export interface UploadProps {
+  /**上传文件的地址 */
   action: string
+  /**默认上传文件的列表 */
   defaultFileList?: UploadFile[]
-  // boolean为上传文件验证的返回值，Promise是文件预处理的返回值
+  /**文件上传前的回调函数，支持boolean型测试或Promise类型的预处理 */
   beforeUpload?: (file: File) => boolean | Promise<File>
+  /**文件上传时的回调函数 */
   onProgress?: (precentage: number, file: File) => void
+  /**文件上传成功时的回调函数 */
   onSuccess?: (data: any, file: File) => void
+  /**文件上传失败时的回调函数 */
   onError?: (err: any, file: File) => void
-  // 在成功和失败前都会被调用
+  /**文件状态改变时的回调函数，上传成功或失败时都会被调用 */
   onChange?: (file: File) => void
+  /**文件被从文件列表移除时的回调函数 */
   onRemove?: (file: UploadFile) => void
+  /**用户自定义的上传请求头部 */
   headers?: { [key: string]: any }
+  /**用户自定义的文件字段名 */
   name?: string
+  /**用户自定义的上传时附带的额外参数 */
   data?: { [key: string]: any }
+  /**用户自定义的 cookie 凭证信息 */
   withCredentials?: boolean
+  /**自定义接收的文件类型 */
   accept?: string
+  /**是否支持文件多选上传 */
   multiple?: boolean
+  /**是否支持拖拽上传 */
   drag?: boolean
 }
 
