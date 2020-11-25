@@ -81,7 +81,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
       setSuggestions([])
     }
     setHighlightIndex(-1)
-  }, [debouncedValue])
+  }, [debouncedValue, fetchSuggestions])
 
   const hightlight = (index: number) => {
     if (index < 0) index = 0
