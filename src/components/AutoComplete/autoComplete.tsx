@@ -17,20 +17,28 @@ interface DataSourceObject {
   value: string
 }
 export type DataSourceType<T = {}> = T & DataSourceObject
+
 export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
+  /**获取 AutoComplete内容的方法，支持同步和异步函数 */
   fetchSuggestions: (
     str: string
   ) => DataSourceType[] | Promise<DataSourceType[]>
+  /**AutoComplete 选项被选中时的回调函数 */
   onSelect?: (item: DataSourceType) => void
+  /**用户自定义选项渲染的模板 */
   renderOption?: (item: DataSourceType) => JSX.Element
 }
-
+/**
+ * 用于输入的自动完成功能，支持同步和异步两种方式获取输入建议，支持键盘响应以及 Input 组件的所有属性
+ *
+ */
 export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const {
     fetchSuggestions,
     onSelect,
     value,
     renderOption,
+    onChange,
     ...restProps
   } = props
 
@@ -44,9 +52,11 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const triggerSearch = useRef(false)
   // 使用useRef获取dom上的真实节点,处理clickOutside
   const componentRef = useRef<HTMLDivElement>(null)
+
   useClickOutside(componentRef, () => {
     setSuggestions([])
   })
+
   useEffect(() => {
     // 当debouncedValue发生改变的时候，发送请求
     if (debouncedValue && triggerSearch.current) {
@@ -80,6 +90,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
     }
     setHighlightIndex(index)
   }
+
   const handleKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case 'Enter':
@@ -102,6 +113,9 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e)
+    }
     const value = e.target.value.trim()
     setInputValue(value)
     triggerSearch.current = true
@@ -119,6 +133,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const renderTemplate = (item: DataSourceType) => {
     return renderOption ? renderOption(item) : item.value
   }
+
   const generateDropdown = () => {
     return (
       <Transition
@@ -153,6 +168,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
       </Transition>
     )
   }
+
   return (
     <div className="auto-complete" ref={componentRef}>
       <Input
