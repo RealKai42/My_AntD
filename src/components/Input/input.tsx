@@ -7,7 +7,6 @@ import React, {
 import classNames from 'classnames'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import Icon from '../Icon/icon'
-import { Info } from '../Icon/icon.stories'
 
 type InputSize = 'default' | 'lg' | 'sm'
 // 因为自己定义的size和html定义的size有冲突，所以使用Omit来移除接口中的值
