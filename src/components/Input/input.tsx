@@ -7,8 +7,9 @@ import React, {
 import classNames from 'classnames'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import Icon from '../Icon/icon'
+import { Info } from '../Icon/icon.stories'
 
-type InputSize = 'lg' | 'sm'
+type InputSize = 'default' | 'lg' | 'sm'
 // 因为自己定义的size和html定义的size有冲突，所以使用Omit来移除接口中的值
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
@@ -65,6 +66,10 @@ export const Input: FC<InputProps> = (props) => {
       {append && <div className="input-group-append">{append}</div>}
     </div>
   )
+}
+
+Input.defaultProps = {
+  size: 'default',
 }
 
 export default Input
