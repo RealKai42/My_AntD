@@ -21,6 +21,8 @@ export const parameters = {
         'Menu',
         'Input',
         'AutoComplete',
+        'Progress',
+        'Upload',
       ],
     },
   },
