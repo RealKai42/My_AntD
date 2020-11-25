@@ -21,6 +21,8 @@ export const parameters = {
 export const decorators = [
   (Stroy) => (
     <div style={wrapperStyle}>
+      <h3>组件演示</h3>
+      <br />
       <Stroy />
     </div>
   ),
