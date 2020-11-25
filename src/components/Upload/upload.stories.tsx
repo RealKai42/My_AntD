@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { Upload, UploadFile, UploadProps } from './upload'
 import Icon from '../Icon/icon'
 import Button, { ButtonProps } from '../Button'
+import { access } from 'fs'
 
 export default {
   title: 'Upload',
@@ -61,6 +62,12 @@ export const checkBeforeUpload = ButtonTemplate.bind({})
 checkBeforeUpload.args = {
   label: 'Support under 50kb',
   beforeUpload: checkFileSize,
+}
+
+export const customizedFileType = ButtonTemplate.bind({})
+customizedFileType.args = {
+  label: 'Only support  ".png"  file',
+  accept: '.png',
 }
 
 const defaultFileListArray: UploadFile[] = [
