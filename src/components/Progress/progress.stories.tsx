@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { Progress, ProgressProps } from './progress'
 
-// todo: 设置strokeHight会失效
 export default {
   title: 'Progress',
   component: Progress,
