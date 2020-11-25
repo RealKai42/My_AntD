@@ -9,7 +9,7 @@ export default {
 } as Meta
 
 const Template: Story<ProgressProps> = (args) => (
-  <Progress {...args} strokeHight={20} />
+  <Progress strokeHight={20} {...args} />
 )
 
 export const defaultProgress = Template.bind({})
