@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import { Progress, ProgressProps } from './progress'
 
 const defaultProps: ProgressProps = {
-  precent: 20,
+  percent: 20,
   strokeHight: 30,
   showText: true,
   theme: 'light',
@@ -12,13 +12,13 @@ const defaultProps: ProgressProps = {
 describe('test Progress component', () => {
   it('should render the correct progress', () => {
     const wrapper = render(<Progress {...defaultProps} />)
-    const progreseText = wrapper.getByText(`${defaultProps.precent}%`)
+    const progreseText = wrapper.getByText(`${defaultProps.percent}%`)
     expect(progreseText).not.toBeNull()
     expect(progreseText.parentElement).toHaveClass(
       `color-${defaultProps.theme}`
     )
     expect(progreseText.parentElement).toHaveStyle(
-      `width:${defaultProps.precent}%`
+      `width:${defaultProps.percent}%`
     )
     expect(progreseText.parentElement!.parentElement).toHaveStyle(
       `height:${defaultProps.strokeHight}px`
@@ -27,7 +27,7 @@ describe('test Progress component', () => {
 
   it('should not render text when showText is false', () => {
     const wrapper = render(<Progress {...defaultProps} showText={false} />)
-    const progreseText = wrapper.queryByText(`${defaultProps.precent}%`)
+    const progreseText = wrapper.queryByText(`${defaultProps.percent}%`)
     expect(progreseText).toBeNull()
   })
 

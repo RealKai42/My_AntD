@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { ThemeProps } from '../Icon/icon'
 
 export interface ProgressProps {
-  precent: number
+  percent: number
   strokeHight?: number
   showText?: boolean
   styles?: React.CSSProperties
@@ -10,7 +10,7 @@ export interface ProgressProps {
 }
 
 export const Progress: FC<ProgressProps> = (props) => {
-  const { precent, strokeHight, showText, styles, theme } = props
+  const { percent, strokeHight, showText, styles, theme } = props
   return (
     <div className="progress-bar" style={styles} data-testid="test-progress">
       <div
@@ -19,9 +19,9 @@ export const Progress: FC<ProgressProps> = (props) => {
       >
         <div
           className={`progress-bar-inner color-${theme}`}
-          style={{ width: `${precent}%` }}
+          style={{ width: `${percent}%` }}
         >
-          {showText && <span className="inner-text">{`${precent}%`}</span>}
+          {showText && <span className="inner-text">{`${percent}%`}</span>}
         </div>
       </div>
     </div>
