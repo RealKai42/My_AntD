@@ -14,7 +14,7 @@ export const parameters = {
   options: {
     storySort: {
       order: [
-        'Welcome page',
+        'Welcome',
         'Alert',
         'Button',
         'Icon',
@@ -29,11 +29,12 @@ export const parameters = {
 }
 
 export const decorators = [
-  (Stroy) => (
-    <div style={wrapperStyle}>
-      <h3>组件演示</h3>
-      <br />
-      <Stroy />
-    </div>
-  ),
+  (Stroy) => {
+    return (
+      <div style={wrapperStyle}>
+        <br />
+        <Stroy />
+      </div>
+    )
+  },
 ]
