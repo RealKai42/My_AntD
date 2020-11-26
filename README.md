@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# MyAntd Component Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+使用 React + TypeScript + Sass 打造的一套 Toy Component Library，主要目的为个人代码练习的组件库。
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+# 在线演示
 
-### `yarn start`
+[Github Pages](https://kaiyiwing.github.io/My_AntD/)  
+or  
+[Vercel](https://myantd.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📦 安装
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```key
+npm install @kaiyi/my_antd --save
+```
 
-### `yarn test`
+```key
+yarn add @kaiyi/my_antd
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔨 使用
 
-### `yarn build`
+```js
+// 引入样式文件
+import '@kaiyi/my_antd/dist/index.css'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// 引入组件
+import { Button } from '@kaiyi/my_antd
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ✨ 组件介绍
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 🌈 Useless 组件库，仅供代码练习和测试 (可能是少数开发者不建议使用的库
+- 📦 开箱即用，但有时不一定能用 (🐶
+- 🛡 使用 TypeScript 实现，提供完整的类型定义文件 (TS 自动生成的
+- ⚙️ 0.1 链路开发和设计工具体系 (也就图一乐
+- 🌍 强大的国际化语言支持，支持世界上使用人数最多的语言 (也就是中文
+- 🎨 深入所有细节的强大的主题定制能力 (你会 sass 就能自己改
 
-### `yarn eject`
+上述介绍是参照 Ant Design 玩梗写的
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ⌨️ Storybook 操作说明
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 使用 A 键可以调出 'Action' 和 'Controls'，提供函数回调显示和组件属性实时修改
+- ⌥ + ← / → 切换 Story
+- ⌥ + ↑ / ↓ 切换 Component
+- F 切换全屏
+- / 使用搜索
+- 上方工具栏可查看 文档、放缩、修改背景、修改 Viewport 等操作
