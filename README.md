@@ -27,7 +27,7 @@ yarn add @kaiyi/my_antd
 import '@kaiyi/my_antd/dist/index.css'
 
 // 引入组件
-import { Button } from '@kaiyi/my_antd
+import { Button } from '@kaiyi/my_antd'
 ```
 
 ## ✨ 组件介绍
